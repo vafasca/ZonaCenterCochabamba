@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "A continuación, se presenta la información completa de los planes de internet inalámbrico, incluyendo nombres, velocidades y precios para cada periodo (mensual, trimestral, semestral y anual):\n\n---\n\n### **Plan 5 Mbps**\n- **Velocidad**: 5 Mbps  \n- **Precios**:  \n  - Mensual: 90 Bs  \n  - Trimestral: 80 Bs  \n  - Semestral: 70 Bs  \n  - Anual: (No especificado en la tabla)  \n\n---\n\n### **Plan 10 Mbps**  \n- **Velocidad**: 10 Mbps  \n- **Precios**:  \n  - Mensual: 150 Bs  \n  - Trimestral: 120 Bs  \n  - Semestral: 110 Bs  \n  - Anual: 90 Bs  \n\n---\n\n### **Plan 15 Mbps**  \n- **Velocidad**: 15 Mbps  \n- **Precios**:  \n  - Mensual: 210 Bs  \n  - Trimestral: 170 Bs  \n  - Semestral: 150 Bs  \n  - Anual: 110 Bs  \n\n---\n\n### **Plan 20 Mbps**  \n- **Velocidad**: 20 Mbps  \n- **Precios**:  \n  - Mensual: 270 Bs  \n  - Trimestral: 220 Bs  \n  - Semestral: 190 Bs  \n  - Anual: 150 Bs  \n\n---\n\n**Notas**:  \n- Los precios están expresados en \"Bs\" (probablemente Bolivianos).  \n- El plan \"5 Mbps\" no incluye precio anual en la tabla proporcionada.  \n- Los planes de mayor velocidad (10, 15, 20 Mbps) ofrecen descuentos progresivos al contratar periodos más largos (trimestral, semestral o anual).",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1771973815,
+  "id": "20260225065634fa589d71ec184b15",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260225065634fa589d71ec184b15",
+  "usage": {
+    "completion_tokens": 386,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 193,
+    "prompt_tokens_details": {
+      "cached_tokens": 4
+    },
+    "total_tokens": 579
+  }
+}

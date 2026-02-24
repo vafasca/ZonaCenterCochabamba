@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Basado en la imagen proporcionada, no es posible extraer información sobre planes de internet (nombres, velocidades, precios) porque la captura de pantalla muestra un mapa de Google My Maps titulado \"Área de Cobertura Conexi...\" con detalles sobre cobertura en una zona geográfica específica (Áreas Huerta Mayu / Alto Paraiso), pero **no contiene datos de planes de servicio, tarifas o velocidades**.  \n\nLa imagen solo incluye:  \n- Un mapa con áreas de cobertura (verde = \"Cobertura Disponible\", rosa = \"Sin Cobertura Confirmada\").  \n- Detalles del mapa (762 vistas, publicado el 14 de mayo de 2021).  \n- Marcadores de ubicaciones (ej. \"Quispe Lima Family\", \"Alto paraiso\").  \n\nPara obtener información sobre planes de internet, necesitarías acceder a una página web o documento que liste explícitamente los planes, sus velocidades y precios (mensuales, semestrales, anuales).",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1771973794,
+  "id": "20260225065622f57e2ab406c1433e",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260225065622f57e2ab406c1433e",
+  "usage": {
+    "completion_tokens": 220,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1225,
+    "prompt_tokens_details": {
+      "cached_tokens": 4
+    },
+    "total_tokens": 1445
+  }
+}
