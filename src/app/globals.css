@@ -3,345 +3,126 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ============================================
-   ZONA WIMAX DESIGN SYSTEM - PURPLE THEME
-   ============================================ */
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-primary: #1a1a2e;
-  --color-secondary: #16213e;
-  --color-accent: #0f3460;
-  --color-highlight: #8b5cf6;
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
 }
 
 :root {
-  --background: #1a1a2e;
-  --foreground: #ffffff;
-  --card: rgba(255, 255, 255, 0.05);
-  --card-foreground: #ffffff;
-  --popover: rgba(26, 26, 46, 0.95);
-  --popover-foreground: #ffffff;
-  --primary: #8b5cf6;
-  --primary-foreground: #ffffff;
-  --secondary: #0f3460;
-  --secondary-foreground: #ffffff;
-  --muted: rgba(255, 255, 255, 0.05);
-  --muted-foreground: #a0a0a0;
-  --accent: #0f3460;
-  --accent-foreground: #ffffff;
-  --destructive: #8b5cf6;
-  --border: rgba(255, 255, 255, 0.1);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #8b5cf6;
-  --radius: 0.625rem;
+  --purple-bg: #7B3FA1;
+  --pink-bg: #E26BA3;
+  --snow: #FFFFFF;
+  --tree-green: #2E8B57;
+  --star-yellow: #FFD700;
+  --hat-red: #C62828;
+  --robot-blue: #00BFFF;
+  --metal-gray: #B0BEC5;
+
+  --background: #7B3FA1;
+  --foreground: #FFFFFF;
+  --card: rgba(255, 255, 255, 0.12);
+  --card-foreground: #FFFFFF;
+  --popover: rgba(123, 63, 161, 0.95);
+  --popover-foreground: #FFFFFF;
+  --primary: #E26BA3;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2E8B57;
+  --secondary-foreground: #FFFFFF;
+  --muted: rgba(176, 190, 197, 0.25);
+  --muted-foreground: #FFFFFF;
+  --accent: #00BFFF;
+  --accent-foreground: #FFFFFF;
+  --destructive: #C62828;
+  --border: rgba(255, 255, 255, 0.25);
+  --input: rgba(255, 255, 255, 0.2);
+  --ring: #FFD700;
+  --radius: 0.75rem;
 }
 
-/* Typography */
 body {
   font-family: 'Inter', var(--font-geist-sans), sans-serif;
   line-height: 1.6;
-  letter-spacing: normal;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', var(--font-geist-sans), sans-serif;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* ============================================
-   CUSTOM ANIMATIONS
-   ============================================ */
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
-.animate-slide-up { animation: slide-up 0.8s ease-out forwards; }
-.animate-fade-in { animation: fade-in 0.6s ease-out forwards; }
-.animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
-
-/* ============================================
-   GLASS MORPHISM
-   ============================================ */
-
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-dark {
-  background: rgba(26, 26, 46, 0.8);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(78, 27, 109, 0.92);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ============================================
-   GRADIENTS - PURPLE THEME
-   ============================================ */
-
 .gradient-text {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #06b6d4 100%);
+  background: linear-gradient(135deg, var(--star-yellow), var(--robot-blue), var(--snow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: linear-gradient(135deg, var(--purple-bg), var(--pink-bg));
 }
-
-.gradient-highlight {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-}
-
-/* ============================================
-   CARD STYLES
-   ============================================ */
 
 .card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  padding: 24px;
   transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  border-color: var(--star-yellow);
 }
 
-/* ============================================
-   BUTTONS - PURPLE THEME
-   ============================================ */
-
 .btn-primary {
-  background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
-  color: #ffffff;
-  padding: 14px 32px;
-  border-radius: 8px;
+  background: linear-gradient(135deg, var(--pink-bg), var(--hat-red));
+  color: var(--snow);
+  padding: 12px 24px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
   filter: brightness(1.1);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #ffffff;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  color: var(--snow);
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--metal-gray);
+  transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
-  border-color: #8b5cf6;
-  color: #8b5cf6;
+  border-color: var(--star-yellow);
+  color: var(--star-yellow);
 }
 
-.btn-whatsapp {
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-  color: #ffffff;
-  padding: 14px 32px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-}
-
-/* ============================================
-   SECTION STYLES
-   ============================================ */
-
-.section {
+.section,
+.section-alt {
   padding: 80px 0;
 }
 
 .section-alt {
-  padding: 80px 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(15, 52, 96, 0.1) 50%, transparent 100%);
+  background: linear-gradient(180deg, rgba(226, 107, 163, 0.3), rgba(123, 63, 161, 0.1));
 }
-
-/* ============================================
-   EFFECTS
-   ============================================ */
-
-.glow {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
-}
-
-.glow-green {
-  box-shadow: 0 0 40px rgba(37, 211, 102, 0.3);
-}
-
-/* ============================================
-   SCROLL STYLES
-   ============================================ */
 
 html {
   scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1a1a2e;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8b5cf6, #a855f7);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #a855f7, #06b6d4);
-}
-
-/* ============================================
-   PRICE TABLE
-   ============================================ */
-
-.price-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.price-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #8b5cf6, #a855f7, #06b6d4);
-}
-
-.price-card.popular::before {
-  height: 6px;
-}
-
-/* ============================================
-   ACCORDION
-   ============================================ */
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.accordion-content.open {
-  max-height: 500px;
-}
-
-/* ============================================
-   MAP CONTAINER
-   ============================================ */
-
-.map-container {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* ============================================
-   RESPONSIVE UTILITIES
-   ============================================ */
-
-@media (max-width: 768px) {
-  .section {
-    padding: 60px 0;
-  }
-  
-  .card {
-    padding: 24px;
-  }
 }
