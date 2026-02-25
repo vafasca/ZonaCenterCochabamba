@@ -8,18 +8,10 @@ build/
 .next/
 out/
 
-# Logs
-*.log
-
 # Environment variables
+.env
 .env.local
 .env.*
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # Python
 __pycache__/
@@ -40,42 +32,31 @@ nosetests.xml
 coverage.xml
 *.cover
 *.log
-.git/
-.mypy_cache/
+*.pot
+*.po
+*~
 .pytest_cache/
+.mypy_cache/
 .hypothesis/
+.eggs/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+pypy*
 
-# Compiled binary files
-*.class
-*.o
-*.so
-*.dll
-*.exe
-*.out
-*.a
-*.obj
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-
-# System files
+# OS
 .DS_Store
 Thumbs.db
 ```

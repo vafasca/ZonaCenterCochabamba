@@ -12,6 +12,174 @@ const FACEBOOK_URL = "https://www.facebook.com/zonawimax"
 const MAPA_COBERTURA = "https://www.google.com/maps/d/u/0/viewer?mid=1izUhztL0r_G3XDU9h56e_b3tlIVbSO7N&ll=-17.47784992744687%2C-66.1406598&z=15"
 
 // ============================================
+// ESTADO DE SECCIONES
+// ============================================
+const SECTIONS_VISIBLE = {
+  inicio: true,
+  beneficios: true,
+  planes: true,
+  cobertura: true,
+  tienda: true,
+  faq: true,
+}
+
+// ============================================
+// DATOS DE LA PÁGINA
+// ============================================
+const PAGE_DATA = {
+  empresa: {
+    nombre: 'Zona Center',
+    hashtag: '#zonawimax',
+    direccion: 'Cochabamba, Bolivia',
+    telefono_principal: '+591 62649081',
+    telefono_tienda: '+591 62651988',
+  },
+  hero: {
+    titulo: 'Internet Inalámbrico',
+    subtitulo: 'A Bajo Costo ⚡️',
+    descripcion: 'En <strong class="text-white">Zona Center</strong> ofrecemos un servicio de conexión inalámbrica denominado <span class="text-[#8b5cf6] font-semibold">#zonawimax</span>, brindando oportunidad de acceso a internet en zonas desatendidas de Cochabamba.',
+  },
+  beneficios: {
+    titulo: '¿Qué te ofrecemos?',
+    descripcion: 'Somos un equipo multidisciplinario de profesionales, ofreciendo una amplia gama de servicios de internet y soluciones IT, para ayudarte a conectarte al mundo digital.',
+    items: [
+      {
+        icon: '📶',
+        title: 'Prueba nuestro servicio',
+        description: 'Se le otorga un periodo de prueba del servicio con la certeza de que será de su agrado, caso contrario puede no aceptar el servicio sin problemas.'
+      },
+      {
+        icon: '📶',
+        title: 'Facilidades de pago',
+        description: 'Puedes pagar directamente en nuestro local comercial, pagar por transferencia bancaria o por código QR desde la comodidad de tu casa.'
+      },
+      {
+        icon: '📶',
+        title: 'Sin contratos forzosos',
+        description: 'No hay un contrato de permanencia obligatoria. Lo que significa que puedes estar con nuestro servicio el tiempo que desees.'
+      },
+      {
+        icon: '📶',
+        title: 'Beneficios a clientes',
+        description: 'Descuentos, atención prioritaria, tratamiento VIP y otros beneficios que faciliten tu integración digital. Accede a estos beneficios desde nuestro local comercial.'
+      }
+    ],
+    promocion: {
+      texto: '¡Obtén el <strong class="text-[#8b5cf6]">20% de descuento</strong> en cualquier servicio que supere el costo mínimo de <strong class="text-white">10 Bs de consumo</strong>!',
+      facebook_texto: 'Facebook',
+      whatsapp_texto: 'WhatsApp'
+    }
+  },
+  planes: {
+    titulo: 'Planes de Internet Inalámbrico',
+    descripcion: 'Elige el plan que mejor se adapte a tus necesidades. Precios en Bolivianos (Bs).',
+    promocion_texto: 'Promoción tarifa semestral y anual vigente',
+    periodos: [
+      { key: 'mensual', label: 'Mensual' },
+      { key: 'trimestral', label: 'Trimestral' },
+      { key: 'semestral', label: 'Semestral' },
+      { key: 'anual', label: 'Anual' }
+    ],
+    planes: [
+      {
+        name: 'Plan Básico',
+        speed: 5,
+        precios: { mensual: 90, trimestral: 80, semestral: 70, anual: 65 },
+        popular: false
+      },
+      {
+        name: 'Plan Hogar',
+        speed: 10,
+        precios: { mensual: 150, trimestral: 120, semestral: 110, anual: 90 },
+        popular: true
+      },
+      {
+        name: 'Plan Plus',
+        speed: 15,
+        precios: { mensual: 210, trimestral: 170, semestral: 150, anual: 110 },
+        popular: false
+      },
+      {
+        name: 'Plan Premium',
+        speed: 20,
+        precios: { mensual: 270, trimestral: 220, semestral: 190, anual: 150 },
+        popular: false
+      }
+    ],
+    mapa_cobertura_texto: 'Mapa de Cobertura',
+    solicitud_ampliacion_texto: 'Solicitud de Ampliación'
+  },
+  cobertura: {
+    titulo: 'Área de Cobertura',
+    descripcion: 'Verifica si tu ubicación está dentro de nuestra zona de cobertura en Cochabamba.',
+    iframe_src: 'https://www.google.com/maps/d/embed?mid=1izUhztL0r_G3XDU9h56e_b3tlIVbSO7N&ll=-17.47784992744687%2C-66.1406598&z=15',
+    cobertura_disponible: {
+      titulo: 'Cobertura Disponible',
+      descripcion: 'Zonas donde podemos instalar el servicio de internet inalámbrico de inmediato.'
+    },
+    sin_cobertura: {
+      titulo: 'Sin Cobertura Confirmada',
+      descripcion: 'Zonas en evaluación para ampliación de cobertura. Solicita el servicio para considerar tu zona.'
+    }
+  },
+  tienda: {
+    titulo: 'Beneficios en nuestra Tienda',
+    descripcion: 'Descuentos, atención prioritaria, tratamiento VIP y otros beneficios que faciliten tu integración digital.',
+    servicios: [
+      { icon: '📚', title: 'Imprime tus textos académicos', desc: 'No leas más en computadora, ahora puedes tener tus libros impresos y anillados, por WhatsApp sin tener que hacer filas.' },
+      { icon: '📸', title: 'Imprime tus fotos favoritas', desc: 'Como las fotos de toda la vida, pero en vez de ir al foto estudio, por WhatsApp. Formato rectangular o estilo retro.' },
+      { icon: '🎓', title: 'Cursos STEAM', desc: 'Inscribe a tus hij@s en nuestros cursos, un tiempo lleno de aprendizaje para desarrollar habilidades tecnológicas.' },
+      { icon: '💻', title: 'Servicio técnico', desc: 'Técnicos con amplia experiencia en diagnóstico, reparación y verificación de equipos de cómputo y periféricos.' }
+    ],
+    steam: {
+      titulo: 'Aprende una habilidad nueva',
+      descripcion: 'Queremos elevar el talento de tus hij@s que estén interesados en la informática, mediante el modelo educativo STEM desarrollamos sus habilidades digitales.',
+      horarios: [
+        { icon: '📅', texto: 'Consulta disponibilidad por WhatsApp' },
+        { icon: '⏰', texto: 'Horario: Mañanas de 10 a 12' },
+        { icon: '👩🏻‍💻', texto: 'Para niños entre 7 a 12 años' }
+      ],
+      boton_texto: 'Reserva de Cupos'
+    }
+  },
+  faq: {
+    titulo: 'Preguntas Frecuentes',
+    items: [
+      {
+        q: '¿Cuál es el costo de instalación?',
+        a: 'El costo de instalación actual es de 200 Bs en todas las zonas de cobertura. Este costo cubre la instalación, los equipos son entregados en calidad de comodato (préstamo).'
+      },
+      {
+        q: '¿Qué necesito para contratar el servicio?',
+        a: 'Para disfrutar del servicio debes mandar tu dirección de domicilio, te indicaremos si tu ubicación es favorable a una visita técnica, pasado la visita se le instalará el servicio.'
+      },
+      {
+        q: '¿No hay cobertura en mi barrio?',
+        a: 'Si deseas nuestro servicio en tu barrio, puedes solicitar la ampliación de cobertura. También es posible mediante un enlace dedicado privado, sujeto a condiciones específicas.'
+      },
+      {
+        q: '¿Cómo funciona la conexión inalámbrica?',
+        a: 'Ubicamos una antena de radio especializada en transmisión de datos, te dejamos un router WiFi dentro de tu casa u oficina, una vez configurado dispondrás de internet.'
+      },
+      {
+        q: '¿Qué es un enlace dedicado?',
+        a: 'Significa que contarás con una velocidad de internet determinada y garantizada todo el tiempo, permitiéndote navegar de forma estable, sin variación. Ideal para negocios como ciber café.'
+      }
+    ]
+  },
+  footer: {
+    descripcion: 'Tu proveedor de confianza para internet inalámbrico en Cochabamba. Conectamos tu mundo con tecnología de vanguardia.',
+    enlaces: [
+      { href: '#beneficios', label: 'Beneficios' },
+      { href: '#planes', label: 'Planes' },
+      { href: '#cobertura', label: 'Cobertura' },
+      { href: '#tienda', label: 'Tienda' },
+      { href: '#faq', label: 'FAQ' },
+    ]
+  }
+}
+
+// ============================================
 // NAVBAR COMPONENT
 // ============================================
 function Navbar() {
