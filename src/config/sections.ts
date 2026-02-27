@@ -7,6 +7,13 @@ export const SECTION_VISIBILITY = {
   faq: true,
 } as const
 
+export const PLAN_PERIOD_VISIBILITY = {
+  mensual: true,
+  trimestral: true,
+  semestral: true,
+  anual: true,
+} as const
+
 export const NAV_ITEMS = [
   { key: 'inicio', href: '#inicio', label: 'Inicio' },
   { key: 'beneficios', href: '#beneficios', label: 'Beneficios' },
@@ -17,3 +24,4 @@ export const NAV_ITEMS = [
 ] as const
 
 export type SectionKey = keyof typeof SECTION_VISIBILITY
+export type PlanPeriodKey = keyof typeof PLAN_PERIOD_VISIBILITY

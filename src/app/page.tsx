@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { NAV_ITEMS, SECTION_VISIBILITY } from '@/config/sections'
+import { NAV_ITEMS, PLAN_PERIOD_VISIBILITY, SECTION_VISIBILITY, type PlanPeriodKey } from '@/config/sections'
 
 // ============================================
 // CONFIGURACIÓN
@@ -247,7 +247,15 @@ function BeneficiosSection() {
 // PLANES SECTION
 // ============================================
 function PlanesSection() {
-  const [periodo, setPeriodo] = useState<'mensual' | 'trimestral' | 'semestral' | 'anual'>('mensual')
+  const allPeriodos: Array<{ key: PlanPeriodKey; label: string }> = [
+    { key: 'mensual', label: 'Mensual' },
+    { key: 'trimestral', label: 'Trimestral' },
+    { key: 'semestral', label: 'Semestral' },
+    { key: 'anual', label: 'Anual' }
+  ]
+  const availablePeriodos = allPeriodos.filter((periodo) => PLAN_PERIOD_VISIBILITY[periodo.key])
+  const defaultPeriodo = availablePeriodos[0]?.key ?? 'mensual'
+  const [periodo, setPeriodo] = useState<PlanPeriodKey>(defaultPeriodo)
 
   const planes = [
     { 
@@ -289,12 +297,6 @@ Me gustaría recibir más información para proceder con la contratación.`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
   }
 
-  const periodos = [
-    { key: 'mensual', label: 'Mensual' },
-    { key: 'trimestral', label: 'Trimestral' },
-    { key: 'semestral', label: 'Semestral' },
-    { key: 'anual', label: 'Anual' }
-  ]
 
   return (
     <section id="planes" className="section">
@@ -315,9 +317,9 @@ Me gustaría recibir más información para proceder con la contratación.`
 
           {/* Period Selector */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {periodos.map((p) => (
+            {availablePeriodos.map((p) => (
               <button key={p.key}
-                onClick={() => setPeriodo(p.key as typeof periodo)}
+                onClick={() => setPeriodo(p.key)}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   periodo === p.key 
                     ? 'gradient-highlight text-white' 
