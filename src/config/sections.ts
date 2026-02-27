@@ -3,15 +3,15 @@ export const SECTION_VISIBILITY = {
   beneficios: true,
   planes: true,
   cobertura: true,
-  tienda: true,
+  tienda: false,
   faq: true,
 } as const
 
 export const PLAN_PERIOD_VISIBILITY = {
   mensual: true,
   trimestral: true,
-  semestral: true,
-  anual: true,
+  semestral: false,
+  anual: false,
 } as const
 
 export const NAV_ITEMS = [
