@@ -7,8 +7,8 @@ import { NAV_ITEMS, PLAN_PERIOD_VISIBILITY, SECTION_VISIBILITY, type PlanPeriodK
 // ============================================
 // CONFIGURACIÓN
 // ============================================
-const WHATSAPP_NUMBER = "59162649081"
-const WHATSAPP_TIENDA = "59162651988"
+const WHATSAPP_NUMBER = "59160757794"
+const WHATSAPP_TIENDA = "59160757794"
 const FACEBOOK_URL = "https://www.facebook.com/zonawimax"
 const MAPA_COBERTURA = "https://www.google.com/maps/d/u/0/viewer?mid=1izUhztL0r_G3XDU9h56e_b3tlIVbSO7N&ll=-17.47784992744687%2C-66.1406598&z=15"
 
