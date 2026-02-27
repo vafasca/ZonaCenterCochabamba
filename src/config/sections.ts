@@ -1,0 +1,19 @@
+export const SECTION_VISIBILITY = {
+  inicio: true,
+  beneficios: true,
+  planes: true,
+  cobertura: true,
+  tienda: true,
+  faq: true,
+} as const
+
+export const NAV_ITEMS = [
+  { key: 'inicio', href: '#inicio', label: 'Inicio' },
+  { key: 'beneficios', href: '#beneficios', label: 'Beneficios' },
+  { key: 'planes', href: '#planes', label: 'Planes' },
+  { key: 'cobertura', href: '#cobertura', label: 'Cobertura' },
+  { key: 'tienda', href: '#tienda', label: 'Tienda' },
+  { key: 'faq', href: '#faq', label: 'FAQ' },
+] as const
+
+export type SectionKey = keyof typeof SECTION_VISIBILITY

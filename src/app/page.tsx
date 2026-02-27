@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { NAV_ITEMS, SECTION_VISIBILITY } from '@/config/sections'
 
 // ============================================
 // CONFIGURACIÓN
@@ -24,14 +25,7 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#beneficios', label: 'Beneficios' },
-    { href: '#planes', label: 'Planes' },
-    { href: '#cobertura', label: 'Cobertura' },
-    { href: '#tienda', label: 'Tienda' },
-    { href: '#faq', label: 'FAQ' },
-  ]
+  const navLinks = NAV_ITEMS.filter((item) => SECTION_VISIBILITY[item.key])
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -700,11 +694,13 @@ function Footer() {
           <div>
             <h4 className="font-bold mb-4">Enlaces</h4>
             <ul className="space-y-2">
-              <li><a href="#beneficios" className="text-gray-400 hover:text-white transition-colors">Beneficios</a></li>
-              <li><a href="#planes" className="text-gray-400 hover:text-white transition-colors">Planes</a></li>
-              <li><a href="#cobertura" className="text-gray-400 hover:text-white transition-colors">Cobertura</a></li>
-              <li><a href="#tienda" className="text-gray-400 hover:text-white transition-colors">Tienda</a></li>
-              <li><a href="#faq" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+              {NAV_ITEMS.filter((item) => item.key !== 'inicio' && SECTION_VISIBILITY[item.key]).map((item) => (
+                <li key={item.key}>
+                  <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -743,13 +739,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background text-white overflow-x-hidden">
       <Navbar />
-      <HeroSection />
-      <BeneficiosSection />
-      <PlanesSection />
-      <CoberturaSection />
-      <TiendaSection />
+      {SECTION_VISIBILITY.inicio && <HeroSection />}
+      {SECTION_VISIBILITY.beneficios && <BeneficiosSection />}
+      {SECTION_VISIBILITY.planes && <PlanesSection />}
+      {SECTION_VISIBILITY.cobertura && <CoberturaSection />}
+      {SECTION_VISIBILITY.tienda && <TiendaSection />}
       <CondicionesSection />
-      <FAQSection />
+      {SECTION_VISIBILITY.faq && <FAQSection />}
       <Footer />
     </main>
   )
