@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { NAV_ITEMS, PLANES_CONFIG, PLAN_PERIOD_VISIBILITY, SECTION_VISIBILITY, type PlanPeriodKey } from '@/config/sections'
 
 // ============================================
 // CONFIGURACIÓN
@@ -24,14 +25,7 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#beneficios', label: 'Beneficios' },
-    { href: '#planes', label: 'Planes' },
-    { href: '#cobertura', label: 'Cobertura' },
-    { href: '#tienda', label: 'Tienda' },
-    { href: '#faq', label: 'FAQ' },
-  ]
+  const navLinks = NAV_ITEMS.filter((item) => SECTION_VISIBILITY[item.key])
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -253,34 +247,17 @@ function BeneficiosSection() {
 // PLANES SECTION
 // ============================================
 function PlanesSection() {
-  const [periodo, setPeriodo] = useState<'mensual' | 'trimestral' | 'semestral' | 'anual'>('mensual')
-
-  const planes = [
-    { 
-      name: 'Plan Básico', 
-      speed: 5, 
-      precios: { mensual: 90, trimestral: 80, semestral: 70, anual: 65 },
-      popular: false
-    },
-    { 
-      name: 'Plan Hogar', 
-      speed: 10, 
-      precios: { mensual: 150, trimestral: 120, semestral: 110, anual: 90 },
-      popular: true
-    },
-    { 
-      name: 'Plan Plus', 
-      speed: 15, 
-      precios: { mensual: 210, trimestral: 170, semestral: 150, anual: 110 },
-      popular: false
-    },
-    { 
-      name: 'Plan Premium', 
-      speed: 20, 
-      precios: { mensual: 270, trimestral: 220, semestral: 190, anual: 150 },
-      popular: false
-    }
+  const allPeriodos: Array<{ key: PlanPeriodKey; label: string }> = [
+    { key: 'mensual', label: 'Mensual' },
+    { key: 'trimestral', label: 'Trimestral' },
+    { key: 'semestral', label: 'Semestral' },
+    { key: 'anual', label: 'Anual' }
   ]
+  const availablePeriodos = allPeriodos.filter((periodo) => PLAN_PERIOD_VISIBILITY[periodo.key])
+  const defaultPeriodo = availablePeriodos[0]?.key ?? 'mensual'
+  const [periodo, setPeriodo] = useState<PlanPeriodKey>(defaultPeriodo)
+
+  const planes = PLANES_CONFIG.filter((plan) => plan.visible)
 
   const handleContratar = (planName: string, speed: number, precio: number) => {
     const message = `¡Hola! Me interesa contratar el ${planName} de ${speed} Mbps.
@@ -295,12 +272,6 @@ Me gustaría recibir más información para proceder con la contratación.`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank')
   }
 
-  const periodos = [
-    { key: 'mensual', label: 'Mensual' },
-    { key: 'trimestral', label: 'Trimestral' },
-    { key: 'semestral', label: 'Semestral' },
-    { key: 'anual', label: 'Anual' }
-  ]
 
   return (
     <section id="planes" className="section">
@@ -321,9 +292,9 @@ Me gustaría recibir más información para proceder con la contratación.`
 
           {/* Period Selector */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {periodos.map((p) => (
+            {availablePeriodos.map((p) => (
               <button key={p.key}
-                onClick={() => setPeriodo(p.key as typeof periodo)}
+                onClick={() => setPeriodo(p.key)}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   periodo === p.key 
                     ? 'gradient-highlight text-white' 
@@ -336,8 +307,8 @@ Me gustaría recibir más información para proceder con la contratación.`
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {planes.map((plan, index) => (
-            <div key={index} 
+          {planes.map((plan) => (
+            <div key={plan.id} 
               className={`price-card card ${plan.popular ? 'popular scale-105' : ''}`}>
               {plan.popular && (
                 <div className="absolute top-4 right-4 px-3 py-1 rounded-full gradient-highlight text-white text-xs font-semibold">
@@ -371,20 +342,16 @@ Me gustaría recibir más información para proceder con la contratación.`
                   <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-300">Router WiFi incluido</span>
+                  <span className="text-gray-300">Instalación: {plan.installationPrice} Bs</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Instalación: 200 Bs</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-gray-300">Sin contratos</span>
-                </li>
+                {plan.features.map((feature) => (
+                  <li key={`${plan.id}-${feature}`} className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-300">{feature}</span>
+                  </li>
+                ))}
               </ul>
 
               <button onClick={() => handleContratar(plan.name, plan.speed, plan.precios[periodo])}
@@ -700,11 +667,13 @@ function Footer() {
           <div>
             <h4 className="font-bold mb-4">Enlaces</h4>
             <ul className="space-y-2">
-              <li><a href="#beneficios" className="text-gray-400 hover:text-white transition-colors">Beneficios</a></li>
-              <li><a href="#planes" className="text-gray-400 hover:text-white transition-colors">Planes</a></li>
-              <li><a href="#cobertura" className="text-gray-400 hover:text-white transition-colors">Cobertura</a></li>
-              <li><a href="#tienda" className="text-gray-400 hover:text-white transition-colors">Tienda</a></li>
-              <li><a href="#faq" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+              {NAV_ITEMS.filter((item) => item.key !== 'inicio' && SECTION_VISIBILITY[item.key]).map((item) => (
+                <li key={item.key}>
+                  <a href={item.href} className="text-gray-400 hover:text-white transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -743,13 +712,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background text-white overflow-x-hidden">
       <Navbar />
-      <HeroSection />
-      <BeneficiosSection />
-      <PlanesSection />
-      <CoberturaSection />
-      <TiendaSection />
+      {SECTION_VISIBILITY.inicio && <HeroSection />}
+      {SECTION_VISIBILITY.beneficios && <BeneficiosSection />}
+      {SECTION_VISIBILITY.planes && <PlanesSection />}
+      {SECTION_VISIBILITY.cobertura && <CoberturaSection />}
+      {SECTION_VISIBILITY.tienda && <TiendaSection />}
       <CondicionesSection />
-      <FAQSection />
+      {SECTION_VISIBILITY.faq && <FAQSection />}
       <Footer />
     </main>
   )
